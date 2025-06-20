@@ -11,10 +11,10 @@ LoadDB();
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ questionId: string }> }
+  context: { params: Promise<{ questionId: string }> }
 ) {
   try {
-    const { questionId } = await params;
+    const { questionId } = await context.params;
     console.log("Fetching answers for questionId:", questionId);
     const answers = await AnswerModel.find({ question: questionId })
       .populate("author", "fullName email")
@@ -32,10 +32,10 @@ export async function GET(
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: Promise<{ questionId: string }> }
+  context: { params: Promise<{ questionId: string }> }
 ) {
   try {
-    const { questionId } = await params;
+    const { questionId } = await context.params;
 
     const body = await req.json();
     const { content, author } = body;

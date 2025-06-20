@@ -11,7 +11,7 @@ LoadDB();
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { questionId: string } }
+  { params }: { params: Promise<{ questionId: string }> }
 ) {
   try {
     const { questionId } = await params;
@@ -32,7 +32,7 @@ export async function GET(
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { questionId: string } }
+  { params }: { params: Promise<{ questionId: string }> }
 ) {
   try {
     const { questionId } = await params;

@@ -11,7 +11,7 @@ LoadDB();
 
 export async function GET(
   req: NextRequest,
-  context: { params: { questionId: string } }
+  context: { params: Promise<{ questionId: string }> }
 ) {
   try {
     const { questionId } = await context.params;
@@ -87,7 +87,7 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  context: { params: { questionId: string } }
+  context: { params: Promise<{ questionId: string }> }
 ) {
   try {
     const { questionId } = await context.params;
@@ -133,4 +133,3 @@ export async function PUT(
     );
   }
 }
-

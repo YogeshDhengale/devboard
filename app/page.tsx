@@ -14,7 +14,7 @@ import { formatDistance } from "date-fns";
 export default async function Home() {
   const questions = await getAllQuestions();
   return (
-    <div>
+    <div className="space-y-6">
       {questions.map((question) => (
         <Card key={question._id} className="pl-14 gap-4 relative">
           <CardHeader>
